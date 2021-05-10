@@ -1,0 +1,453 @@
+<!--
+=========================================================
+* * Black Dashboard - v1.0.1
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/black-dashboard
+* Copyright 2019 Creative Tim (https://www.creative-tim.com)
+
+
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <title>
+    AI404 - Application
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:300,400,500,700" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600" rel="stylesheet" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <!-- Nucleo Icons -->
+  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link href="../assets/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
+  <!-- Animate CSS -->
+  <link rel="stylesheet" type="text/css" href="bites/css/animate.css" />
+  <!-- Bites Theme CSS -->
+  <link rel="stylesheet" href="bites/css/bites-theme.css" /> 
+  <!-- UI-Dropdown CSS -->
+  <link rel="stylesheet" href="../assets/UI-Dropdown-master/dropdown.css" /> 
+</head>
+
+<body class="">
+  <div class="wrapper">
+    <div class="sidebar">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+    -->
+    <div class="sidebar-wrapper">
+      <div class="logo">
+        <a href="javascript:void(0)" class="simple-text logo-normal">
+          AI404 - Bias not found!
+        </a>
+      </div>
+      <ul class="nav">
+        <li>
+          <a href="./index.html">
+            <i class="tim-icons icon-chart-pie-36"></i>
+            <p>Overview</p>
+          </a>
+        </li>
+        <li class="active ">
+          <a href="./algorithm1.html">
+            <i class="tim-icons icon-puzzle-10"></i>
+            <p>Application</p>
+          </a>
+        </li>
+        <li>
+          <a href="./algorithm2.html">
+            <i class="tim-icons icon-puzzle-10"></i>
+            <p>Application 2</p>
+          </a>
+        </li>
+        <li onclick="showNotification('top','center', 'Coming Soon!')">
+          <a >
+            <i class="tim-icons icon-align-center"></i>
+            <p>Coming Soon!</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-panel">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+      <div class="container-fluid">
+        <div class="navbar-wrapper">
+          <div class="navbar-toggle d-inline">
+            <button type="button" class="navbar-toggler">
+              <span class="navbar-toggler-bar bar1"></span>
+              <span class="navbar-toggler-bar bar2"></span>
+              <span class="navbar-toggler-bar bar3"></span>
+            </button>
+          </div>
+          <a class="navbar-brand" href="javascript:void(0)">APPLICATION</a>
+        </div>
+          <div class="collapse navbar-collapse" id="navigation">
+            <ul class="navbar-nav ml-auto">
+              <li class="dropdown nav-item">
+                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"></a>
+                  <div class="photo">
+                    <img src="/assets/img/favicon.png">
+                  </div>
+                </a>
+              </li>
+              <li class="separator d-lg-none"></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <i class="tim-icons icon-simple-remove"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Navbar -->
+      <div class="content">  
+        <div class="center">  
+          <button type="button" class="btn position-relative" data-toggle="modal" data-target="#bite-21" style="margin-bottom: 2vh">Start Application 1</button>
+        </div>
+        <div class="row" style="position: relative;">
+          <div class="col-md-12">
+            <div class="card " style="margin-bottom: 0.5vh;"">
+              <div class="card-header" style="justify-content: center;">
+                <h4 class="card-title text-center"> Output</h4>
+              </div>
+              </div>
+          </div>
+      </div>
+      <div class="row" style="position: relative;">
+        <div class="col-md-12">
+          <div class="card ">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table tablesorter " id="outputTable1">
+                  <thead class=" text-primary">
+                    <tr>
+                      <th>
+                        Dataset
+                      </th>
+                      <th>
+                        Protected Attribute
+                      </th>
+                      <th>
+                        Privileged Class
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody id="body1">
+                                  
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+          <div class="row" style="position: relative;">
+            <div class="col-md-12">
+              <div class="card ">
+                <div class="card-header" style="justify-content: center;">
+                  <h4 class="card-title text-center"> Original Dataset</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table tablesorter " id="outputTable2">
+                      <thead class=" text-primary">
+                        <tr>
+                          <th>
+                            Statistical Parity Difference
+                          </th>
+                          <th>
+                            Difference - mean outcomes between un/privileged groups
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                                      
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="row" style="position: relative;">
+          <div class="col-md-12">
+            <div class="card ">
+              <div class="card-header" style="justify-content: center;">
+                <h4 class="card-title text-center"> Transformed Dataset</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table tablesorter " id="outputTable3">
+                    <thead class=" text-primary">
+                      <tr>
+                        <th>
+                          Statistical Parity Difference
+                        </th>
+                        <th>
+                          Difference - mean outcomes between un/privileged groups
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                                    
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <footer class="footer">
+        <div class="container-fluid">
+          <ul class="nav">
+            <li class="nav-item">
+              <a href="javascript:void(0)" class="nav-link">
+                AI404
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="javascript:void(0)" class="nav-link">
+                About Us
+              </a>
+            </li>
+          </ul>
+          <div class="copyright">
+            All rights reserved - ©
+            <script>
+              document.write(new Date().getFullYear())
+            </script> AI 404
+          </div>
+        </div>
+      </footer>
+      
+      <!-- The Modal -->
+      <div class="modal fade position-center-center m-width-570" id="bite-21" bite-show="fadeIn" bite-hide="fadeOut">
+        <div class="modal-dialog animated fast">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close close-light" data-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-sm-7 pl-0 pr-3">
+                                <div class="popup-title text-white mb-3">Bias Testing and Mitigation</div>
+                                <p class="popup-text mb-4 text-white">Please provide Training Dataset and input parameters to quantitatively measure and mitigate bias:</p>
+                                <form class="form-subscribe form-inline position-relative">
+                                    <div class="form-group">
+                                        <input type="text" id="path" class="form-control text-light email-address" placeholder="Input Dataset Filepath" />
+                                        <button type="button" class="btn position-absolute"><img src="\assets\img\folder.png" srcset="/bites/images/arrow@2x.png 2x" alt="" onclick="getPathToFile()" /></button>
+                                    </div>
+                                    <!-- <button type="button" class="btn position-absolute"><img src="\assets\img\folder.png" srcset="/bites/images/arrow@2x.png 2x" alt="" onclick="showNotification('top','center', 'Coming Soon!')" /></button> -->
+                                  <div class="form-group" style="margin-top: 2vh;">
+                                      <input type="text" id="data" class="form-control text-light email-address" placeholder="Algorithm Output Column" required/>
+                                  </div>
+                                  <div class="form-group" style="margin-top: 2vh;">
+                                    <select class="ui search dropdown" id="selection">
+                                      <option value="" disabled selected hidden>Effected column</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group" style="margin-top: 0.5vh;">
+                                    <button class="accordion">Optional</button>
+                                    <div class="panel">
+                                      <div class="form-group" style="margin-top: 2vh;">
+                                        <input type="text" id="optional1" class="form-control text-light email-address" placeholder="Instance Weights Column Name" required/>
+                                      </div>
+                                      <div class="form-group" style="margin-top: 2vh;">
+                                        <input type="text" id="optional2" class="form-control text-light email-address" placeholder="Categorical Features" required/>
+                                      </div>
+                                      <div class="form-group" style="margin-top: 2vh;">
+                                        <input type="text" id="optional3" class="form-control text-light email-address" placeholder="Columns To Be Preserved" required/>
+                                      </div>
+                                      <div class="form-group" style="margin-top: 2vh;margin-bottom: 1.5vh">
+                                        <input type="text" id="optional4" class="form-control text-light email-address" placeholder="Columns To Be Dropped " required/>
+                                      </div>                                      
+                                    </div>
+                                  </div>
+                                  <div class="form-group" style="margin-top: 0.5vh;">
+                                    <input type="text" id="privileged" class="form-control text-light email-address" placeholder="Privileged Index/Class" required/>
+                                  </div>
+                                  <div class="form-group" style="margin-top: 2vh;">
+                                    <input type="text" id="fav_output" class="form-control text-light email-address" placeholder="Favorable output for privileged class" required/>
+                                  </div>
+                                  <div class="form-group" style="margin-top: 2vh;">
+                                    <input type="text" id="unprivileged" class="form-control text-light email-address" placeholder="Unprivileged Index/Class" required/>
+                                    <button type="button" class="btn position-absolute" onclick="userInput()" data-dismiss="modal"><img src="\assets\img\arrow.png" srcset="/bites/images/arrow@2x.png 2x" /></button>
+                                  </div>                                 
+                                  
+                                </form>
+                            </div>
+                        </div>
+                    </div>       
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  <!--   Core JS Files   -->
+  <script src="../assets/js/core/jquery.min.js"></script>
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  <!--  Google Maps Plugin    -->
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  <!-- Chart JS -->
+  <script src="../assets/js/plugins/chartjs.min.js"></script>
+  <!--  Notifications Plugin    -->
+  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
+  <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../assets/js/black-dashboard.min.js?v=1.0.0"></script><!-- Black Dashboard DEMO methods, don't include it in your project! -->
+  <script src="../assets/demo/demo.js"></script>
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script type="text/javascript" src="/eel.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <script type="text/javascript">    
+    eel.expose(getPathToFile);
+    function getPathToFile() {
+        eel.pythonPath()(callbackPath);
+    };
+    
+    eel.expose(userInput);
+    function userInput() {
+      var path = document.getElementById("path").value;
+      var data = document.getElementById("data").value;
+      var selection = document.getElementById("selection").value;
+      var privileged = document.getElementById("privileged").value;
+      var unprivileged = document.getElementById("unprivileged").value;
+      var fav_out = document.getElementById("fav_output").value;
+
+      fillTable(path, data, selection);
+      eel.getInput1(data, selection, privileged, unprivileged, fav_out)(callbackData);
+    }
+    
+    function callbackPath(output) {
+      document.getElementById("path").value = output[0];
+      select = document.getElementById("selection");
+      for (var i = 1; i<output[1].length; i++){
+        var opt = document.createElement('option');
+        opt.value = output[1][i];
+        opt.innerHTML = output[1][i];
+        select.appendChild(opt);
+      }
+    }
+
+    function fillTable(path, data, attribute) {
+      var tbodyRef = document.getElementById("outputTable1").getElementsByTagName('tbody')[0];
+      tbodyRef.innerHTML = '';
+      var newRow = tbodyRef.insertRow();
+
+      var newCell1 = newRow.insertCell(0);
+      var newCell2 = newRow.insertCell(1);
+      var newCell3 = newRow.insertCell(2);
+
+      var tpath = document.createTextNode(path);
+      newCell1.appendChild(tpath);
+      var tdata = document.createTextNode(data);
+      newCell2.appendChild(tdata);
+      var tattribute = document.createTextNode(attribute);
+      newCell3.appendChild(tattribute);
+    }
+
+    function callbackData(output) {
+
+      var tbodyRef = document.getElementById("outputTable2").getElementsByTagName('tbody')[0];
+      var newRow = tbodyRef.insertRow();
+
+      var newCell1 = newRow.insertCell(0);
+      var newCell2 = newRow.insertCell(1);
+
+      var toutput1 = document.createTextNode(output[0]);
+      newCell1.appendChild(toutput1);
+      var toutput2 = document.createTextNode(output[1]);
+      newCell2.appendChild(toutput2);
+
+      
+      tbodyRef = document.getElementById("outputTable3").getElementsByTagName('tbody')[0];
+      newRow = tbodyRef.insertRow();
+
+      newCell1 = newRow.insertCell(0);
+      newCell2 = newRow.insertCell(1);
+
+      toutput1 = document.createTextNode(output[2]);
+      newCell1.appendChild(toutput1);
+      toutput2 = document.createTextNode(output[3]);
+      newCell2.appendChild(toutput2);
+      
+      
+    }
+    
+    function showNotification(from, align, message) {
+    color = Math.floor((Math.random() * 4) + 1);
+
+    $.notify({
+      icon: "fas fa-exclamation",
+      message: message
+
+    }, {
+      type: type[color],
+      timer: 8000,
+      placement: {
+        from: from,
+        align: align
+      }
+    });
+  }
+  
+  </script>
+  <script>
+    window.TrackJS &&
+      TrackJS.install({
+        token: "ee6fab19c5a04ac1a32a645abde4613a",
+        application: "black-dashboard-free"
+      });
+
+  </script>
+  <script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        /* Toggle between adding and removing the "active" class,
+        to highlight the button that controls the panel */
+        this.classList.toggle("active");
+
+        /* Toggle between hiding and showing the active panel */
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    }
+  </script>
+
+</body>
+
+</html>
