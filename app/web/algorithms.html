@@ -46,16 +46,16 @@
           </a>
         </div>
         <ul class="nav">
-          <li class="active ">
+          <li>
             <a href="./index.html">
               <i class="tim-icons icon-chart-pie-36"></i>
               <p>Overview</p>
             </a>
           </li>
-          <li>
-            <a href="./tables.html">
+          <li class="active ">
+            <a href="./algorithms.html">
               <i class="tim-icons icon-puzzle-10"></i>
-              <p>Application</p>
+              <p>Bias Testing and Mitigation</p>
             </a>
           </li>
           <li onclick="demo.showNotification('top','center', 'Coming Soon!')">
@@ -79,7 +79,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="javascript:void(0)">OVERVIEW</a>
+            <a class="navbar-brand" href="javascript:void(0)">Bias Testing and Mitigation</a>
           </div>
             <div class="collapse navbar-collapse" id="navigation">
               <ul class="navbar-nav ml-auto">
@@ -110,86 +110,39 @@
       <!-- End Navbar -->
       <div class="content">
         <div class="row">
-          <div class="col-12">
-            <div class="card card-chart">
-              <div class="card-header ">
-                <div class="row">
-                  <div class="col-sm-6 text-left">
-                    <h5 class="card-category">Spacer</h5>
-                    <h2 class="card-title">Comming Soon!</h2>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-                      <label class="btn btn-sm btn-primary btn-simple active" id="0">
-                        <input type="radio" name="options" checked>
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Spacer</span>
-                        <span class="d-block d-sm-none">
-                          <i class="tim-icons icon-single-02"></i>
-                        </span>
-                      </label>
-                      <label class="btn btn-sm btn-primary btn-simple" id="1">
-                        <input type="radio" class="d-none d-sm-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Spacer</span>
-                        <span class="d-block d-sm-none">
-                          <i class="tim-icons icon-gift-2"></i>
-                        </span>
-                      </label>
-                      <label class="btn btn-sm btn-primary btn-simple" id="2">
-                        <input type="radio" class="d-none" name="options">
-                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Spacer</span>
-                        <span class="d-block d-sm-none">
-                          <i class="tim-icons icon-tap-02"></i>
-                        </span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="chartBig1"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
           <div class="col-lg-4">
             <div class="card card-chart">
               <div class="card-header">
-                <h5 class="card-category">Coming Soon!</h5>
-                <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> Spacer</h3>
+                <h5 class="card-category">Bias Testing</h5>
+                <h2 class="card-title" style="text-align: center;"> Bias measuring Algorithm 1</h2>
               </div>
-              <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="chartLinePurple"></canvas>
-                </div>
+              <div class="card-body" style="text-align: center;">
+                <h4 class="card-title" > Click here if your dataset only contains Predicted outcomes</h4>
+                <a type="button" href="./algorithm1.html" class="btn"><img src="\assets\img\arrow.png" srcset="/bites/images/arrow@2x.png 2x" /></a>
               </div>
             </div>
           </div>
           <div class="col-lg-4">
             <div class="card card-chart">
               <div class="card-header">
-                <h5 class="card-category">Coming Soon!</h5>
-                <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info"></i> Spacer</h3>
+                <h5 class="card-category">Bias Testing</h5>
+                <h2 class="card-title" style="text-align: center;"> Bias measuring Algorithm 2</h2>
               </div>
-              <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="CountryChart"></canvas>
-                </div>
+              <div class="card-body" style="text-align: center;">
+                <h4 class="card-title" > Click here if your dataset contains both predicted and true outcomes</h4>
+                <a type="button" href="./algorithm2.html" class="btn"><img src="\assets\img\arrow.png" srcset="/bites/images/arrow@2x.png 2x" /></a>
               </div>
             </div>
           </div>
           <div class="col-lg-4">
             <div class="card card-chart">
               <div class="card-header">
-                <h5 class="card-category">Coming Soon!</h5>
-                <h3 class="card-title"><i class="tim-icons icon-send text-success"></i> Spacer</h3>
+                <h5 class="card-category">Bias Mitigation</h5>
+                <h2 class="card-title" style="text-align: center;">  Binary Resampling Algorithm</h2>
               </div>
-              <div class="card-body">
-                <div class="chart-area">
-                  <canvas id="chartLineGreen"></canvas>
-                </div>
+              <div class="card-body" style="text-align: center;">
+                <h4 class="card-title" > Spacer</h4>
+                <a type="button" href="./algorithm3.html" class="btn"><img src="\assets\img\arrow.png" srcset="/bites/images/arrow@2x.png 2x" /></a>
               </div>
             </div>
           </div>

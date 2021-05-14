@@ -119,7 +119,7 @@
       <!-- End Navbar -->
       <div class="content">  
         <div class="center">  
-          <button type="button" class="btn position-relative" data-toggle="modal" data-target="#bite-21" style="margin-bottom: 2vh">Start Application 1</button>
+          <button type="button" class="btn position-relative" data-toggle="modal" data-target="#bite-21" style="margin-bottom: 2vh">Start Resampling Application</button>
         </div>
         <div class="row" style="position: relative;">
           <div class="col-md-12">
@@ -142,10 +142,7 @@
                         Dataset
                       </th>
                       <th>
-                        Protected Attribute
-                      </th>
-                      <th>
-                        Privileged Class
+                        Predicted Outcome Column
                       </th>
                     </tr>
                   </thead>
@@ -157,55 +154,21 @@
             </div>
           </div>
         </div>
-    </div>
-          <div class="row" style="position: relative;">
-            <div class="col-md-12">
-              <div class="card ">
-                <div class="card-header" style="justify-content: center;">
-                  <h4 class="card-title text-center"> Original Dataset</h4>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table tablesorter " id="outputTable2">
-                      <thead class=" text-primary">
-                        <tr>
-                          <th>
-                            Statistical Parity Difference
-                          </th>
-                          <th>
-                            Difference - mean outcomes between un/privileged groups
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                                      
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
         </div>
         <div class="row" style="position: relative;">
           <div class="col-md-12">
             <div class="card ">
-              <div class="card-header" style="justify-content: center;">
-                <h4 class="card-title text-center"> Transformed Dataset</h4>
-              </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table tablesorter " id="outputTable3">
+                  <table class="table tablesorter " id="outputTable2">
                     <thead class=" text-primary">
                       <tr>
                         <th>
-                          Statistical Parity Difference
-                        </th>
-                        <th>
-                          Difference - mean outcomes between un/privileged groups
+                          Output
                         </th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="body2">
                                     
                     </tbody>
                   </table>
@@ -213,7 +176,8 @@
               </div>
             </div>
           </div>
-      </div>
+          </div>
+        </div>
       <footer class="footer">
         <div class="container-fluid">
           <ul class="nav">
@@ -248,50 +212,26 @@
                     <div class="col">
                         <div class="row">
                             <div class="col-sm-7 pl-0 pr-3">
-                                <div class="popup-title text-white mb-3">Bias Testing and Mitigation</div>
-                                <p class="popup-text mb-4 text-white">Please provide Training Dataset and input parameters to quantitatively measure and mitigate bias:</p>
+                                <div class="popup-title text-white mb-3">Bias Mitigation</div>
+                                <p class="popup-text mb-4 text-white">Please provide Dataset and input parameters to effectively and mitigate bias:</p>
                                 <form class="form-subscribe form-inline position-relative">
-                                    <div class="form-group">
-                                        <input type="text" id="path" class="form-control text-light email-address" placeholder="Input Dataset Filepath" />
-                                        <button type="button" class="btn position-absolute"><img src="\assets\img\folder.png" srcset="/bites/images/arrow@2x.png 2x" alt="" onclick="getPathToFile()" /></button>
-                                    </div>
-                                    <!-- <button type="button" class="btn position-absolute"><img src="\assets\img\folder.png" srcset="/bites/images/arrow@2x.png 2x" alt="" onclick="showNotification('top','center', 'Coming Soon!')" /></button> -->
-                                  <div class="form-group" style="margin-top: 2vh;">
-                                      <input type="text" id="data" class="form-control text-light email-address" placeholder="Algorithm Output Column" required/>
+                                  <div class="form-group">
+                                      <input type="text" id="path" class="form-control text-light email-address" placeholder="Input Dataset Filepath" />
+                                      <button type="button" class="btn position-absolute"><img src="\assets\img\folder.png" srcset="/bites/images/arrow@2x.png 2x" alt="" onclick="getPathToFile()" /></button>
                                   </div>
                                   <div class="form-group" style="margin-top: 2vh;">
-                                    <select class="ui search dropdown" id="selection">
-                                      <option value="" disabled selected hidden>Effected column</option>
-                                    </select>
-                                  </div>
-                                  <div class="form-group" style="margin-top: 0.5vh;">
-                                    <button class="accordion">Optional</button>
-                                    <div class="panel">
-                                      <div class="form-group" style="margin-top: 2vh;">
-                                        <input type="text" id="optional1" class="form-control text-light email-address" placeholder="Instance Weights Column Name" required/>
-                                      </div>
-                                      <div class="form-group" style="margin-top: 2vh;">
-                                        <input type="text" id="optional2" class="form-control text-light email-address" placeholder="Categorical Features" required/>
-                                      </div>
-                                      <div class="form-group" style="margin-top: 2vh;">
-                                        <input type="text" id="optional3" class="form-control text-light email-address" placeholder="Columns To Be Preserved" required/>
-                                      </div>
-                                      <div class="form-group" style="margin-top: 2vh;margin-bottom: 1.5vh">
-                                        <input type="text" id="optional4" class="form-control text-light email-address" placeholder="Columns To Be Dropped " required/>
-                                      </div>                                      
-                                    </div>
-                                  </div>
-                                  <div class="form-group" style="margin-top: 0.5vh;">
-                                    <input type="text" id="privileged" class="form-control text-light email-address" placeholder="Privileged Index/Class" required/>
+                                    <input type="text" id="target" class="form-control text-light email-address" placeholder="Target Path" required/>
                                   </div>
                                   <div class="form-group" style="margin-top: 2vh;">
-                                    <input type="text" id="fav_output" class="form-control text-light email-address" placeholder="Favorable output for privileged class" required/>
+                                      <input type="text" id="pri_out" class="form-control text-light email-address" placeholder="Positive outcome" required/>
                                   </div>
                                   <div class="form-group" style="margin-top: 2vh;">
-                                    <input type="text" id="unprivileged" class="form-control text-light email-address" placeholder="Unprivileged Index/Class" required/>
+                                      <input type="text" id="unpri_out" class="form-control text-light email-address" placeholder="Negative outcome" required/>
+                                  </div>
+                                  <div class="form-group" style="margin-top: 2vh;">
+                                    <input type="text" id="out_column" class="form-control text-light email-address" placeholder="Predicted outcome column" required/>
                                     <button type="button" class="btn position-absolute" onclick="userInput()" data-dismiss="modal"><img src="\assets\img\arrow.png" srcset="/bites/images/arrow@2x.png 2x" /></button>
                                   </div>                                 
-                                  
                                 </form>
                             </div>
                         </div>
@@ -329,14 +269,13 @@
     eel.expose(userInput);
     function userInput() {
       var path = document.getElementById("path").value;
-      var data = document.getElementById("data").value;
-      var selection = document.getElementById("selection").value;
-      var privileged = document.getElementById("privileged").value;
-      var unprivileged = document.getElementById("unprivileged").value;
-      var fav_out = document.getElementById("fav_output").value;
+      var target_path = document.getElementById("target").value;
+      var privileged = document.getElementById("pri_out").value;
+      var unprivileged = document.getElementById("unpri_out").value;
+      var output_column = document.getElementById("out_column").value;
 
-      fillTable(path, data, selection);
-      eel.getInput1(data, selection, privileged, unprivileged, fav_out)(callbackData);
+      fillTable(path, output_column);
+      eel.getInput3(output_column, target_path, privileged, unprivileged)(callbackData);
     }
     
     function callbackPath(output) {
@@ -350,21 +289,18 @@
       }
     }
 
-    function fillTable(path, data, attribute) {
+    function fillTable(path, data) {
       var tbodyRef = document.getElementById("outputTable1").getElementsByTagName('tbody')[0];
       tbodyRef.innerHTML = '';
       var newRow = tbodyRef.insertRow();
 
       var newCell1 = newRow.insertCell(0);
       var newCell2 = newRow.insertCell(1);
-      var newCell3 = newRow.insertCell(2);
 
       var tpath = document.createTextNode(path);
       newCell1.appendChild(tpath);
       var tdata = document.createTextNode(data);
       newCell2.appendChild(tdata);
-      var tattribute = document.createTextNode(attribute);
-      newCell3.appendChild(tattribute);
     }
 
     function callbackData(output) {
@@ -372,27 +308,10 @@
       var tbodyRef = document.getElementById("outputTable2").getElementsByTagName('tbody')[0];
       var newRow = tbodyRef.insertRow();
 
-      var newCell1 = newRow.insertCell(0);
-      var newCell2 = newRow.insertCell(1);
+      var newCell = newRow.insertCell(0);
 
-      var toutput1 = document.createTextNode(output[0]);
-      newCell1.appendChild(toutput1);
-      var toutput2 = document.createTextNode(output[1]);
-      newCell2.appendChild(toutput2);
-
-      
-      tbodyRef = document.getElementById("outputTable3").getElementsByTagName('tbody')[0];
-      newRow = tbodyRef.insertRow();
-
-      newCell1 = newRow.insertCell(0);
-      newCell2 = newRow.insertCell(1);
-
-      toutput1 = document.createTextNode(output[2]);
-      newCell1.appendChild(toutput1);
-      toutput2 = document.createTextNode(output[3]);
-      newCell2.appendChild(toutput2);
-      
-      
+      var toutput = document.createTextNode(output);
+      newCell.appendChild(toutput); 
     }
     
     function showNotification(from, align, message) {

@@ -13,6 +13,19 @@ from aif360.algorithms.postprocessing import CalibratedEqOddsPostprocessing, EqO
 from aif360.algorithms.preprocessing import Reweighing
 from aif360.algorithms.preprocessing import DisparateImpactRemover
 
+# bias mitigation
+import sklearn
+import scipy
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.metrics import classification_report,accuracy_score
+from sklearn.ensemble import IsolationForest
+from sklearn.neighbors import LocalOutlierFactor
+from sklearn.svm import OneClassSVM
+from pylab import rcParams
+from imblearn.combine import SMOTETomek
+from imblearn.under_sampling import NearMiss
+
 
 def calculate_bias1(data_label, data, selection, privileged, unprivileged, fav_out):
     dataset_used = data_label
@@ -28,12 +41,6 @@ def calculate_bias1(data_label, data, selection, privileged, unprivileged, fav_o
         pass
 
     print("1. Computing.....")
-    data = data
-    data_label = "output"
-    fav_out = 0
-    selection = "sex"
-    privileged = 0
-    unprivileged = 1
     data_orig = StandardDataset(data, label_name=data_label, favorable_classes=[fav_out], # --> favorable output for biased class output
                  protected_attribute_names=[selection],
                  privileged_classes=[])
@@ -86,7 +93,7 @@ def calculate_bias2(data, selection, privileged, unprivileged, metrics, predicte
     output = [[],[]]
     for metric in metrics:
         o = eval('metric_orig_train.' + metric + '()')
-        output[0].append(o)
+        output[0].append(round(o, 10))
 
 
     RW = Reweighing(unprivileged_groups=unprivileged_group, privileged_groups=privileged_group)
@@ -103,11 +110,43 @@ def calculate_bias2(data, selection, privileged, unprivileged, metrics, predicte
                                              privileged_groups=privileged_group)
     for metric in metrics:
         o = eval('metric_orig_train.' + metric + '()')
-        output[1].append(o)
-
+        output[1].append(round(o, 10))
 
     return output
 
+
+def bias_mitigation(data, target, path, pri_out, unpri_out):
+    rcParams['figure.figsize'] = 14, 8
+    RANDOM_SEED = 42
+    LABELS = [1, 0]
+
+    try: 
+        pri_out = int(pri_out)
+        unpri_out = int(unpri_out)
+    except Exception:
+        pass
+
+    #Create independent and Dependent Features
+    columns = data.columns.tolist()
+
+    columns = [c for c in columns if c not in [target]]
+    state = np.random.RandomState(42)
+    X = data[columns]
+    Y = data[target]
+
+    # Get the Fraud and the normal dataset 
+    NegetiveOutcome = data[data[target]==unpri_out]
+    PositiveOutcome = data[data[target]==pri_out]
+
+    # Implementing Oversampling for Handling Imbalanced 
+    smk = SMOTETomek(random_state=42)
+    X_res,y_res=smk.fit_sample(X,Y)
+
+    data.pop('output')
+    transformed_Dataset = pd.DataFrame(X_res, columns = [data.columns])
+    TransCSV = transformed_Dataset.to_excel(path + "/export_dataframe.xlsx", index = False, header=True)
+
+    return "Bias successfully mitigated at " + path
 
 def read_data(path):
     #Input File Path #na_values parameter is hardcoded
@@ -116,9 +155,7 @@ def read_data(path):
     return data
 
 # -------------------------------- eel implementation ---------------------------------------------------------
-eel.init('web')
 file_path = ""
-
 
 @eel.expose
 def pythonPath(wildcard="*"):
@@ -155,11 +192,21 @@ def getInput1(data_label, selection, privileged, unprivileged, fav_out):
 @eel.expose
 def getInput2(selection, privileged, unprivileged, metrics, predicted_outcome, true_outcome):
     output = None
-    data = None
     print("Calculating metrics")
     if file_path!="":
         data = read_data(file_path)
     output = calculate_bias2(data, selection, privileged, unprivileged, metrics, predicted_outcome, true_outcome)
+    
+    return output
+
+
+@eel.expose
+def getInput3(outcome_column, target_path, pri_out, unpri_out):
+    output = None
+    print("Calculating metrics")
+    if file_path!="":
+        data = read_data(file_path)
+    output = bias_mitigation(data, outcome_column, target_path, pri_out, unpri_out)
     
     return output
     
@@ -169,6 +216,10 @@ web_options = {
 	"host": "localhost",
 	"port": 8000,
 }
-print("Initiating...")
-#eel.start(r'D:\dev\python\projects\ai-bias\web\index.html') #local application
-eel.start('index.html', options=web_options, suppress_error=True) #run on web
+
+
+if __name__ == "__main__":
+    eel.init('web')
+    print("Initiating...")
+    eel.start('index.html') #local application
+    #eel.start('index.html', options=web_options, suppress_error=True) #run on web
