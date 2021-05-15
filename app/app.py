@@ -29,14 +29,16 @@ from imblearn.under_sampling import NearMiss
 
 def calculate_bias1(data_label, data, selection, privileged, unprivileged, fav_out):
     dataset_used = data_label
-    message1_1 = "yeet1-1"
-    message1_2 = "yeet1-2"
-    message2_1 = "yeet2-1"
-    message2_2 = "yeet2-2"
+    message1_1 = "test1-1"
+    message1_2 = "test1-2"
+    message2_1 = "test2-1"
+    message2_2 = "test2-2"
     privileged_groups = []
 
     try:
         fav_out = int(fav_out)
+        privileged = int(privileged)
+        unprivileged = int(unprivileged)
     except Exception:
         pass
 
