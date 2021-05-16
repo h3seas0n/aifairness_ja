@@ -78,6 +78,15 @@ def calculate_bias1(data_label, data, selection, privileged, unprivileged, fav_o
 
 
 def calculate_bias2(data, selection, privileged, unprivileged, metrics, predicted_outcome, true_outcome):
+    try:
+        privileged = int(privileged)
+        unprivileged = int(unprivileged)
+    except Exception:
+        pass
+
+    print(predicted_outcome)
+    print(privileged)
+
     predicted_outcome_column_process = data.loc[:,predicted_outcome]
     predicted_outcome_column_arr = predicted_outcome_column_process.values                
 
