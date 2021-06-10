@@ -27,6 +27,56 @@ from imblearn.combine import SMOTETomek
 from imblearn.under_sampling import NearMiss
 
 
+
+#-----------APP2_CODE
+def calculate_bias2(data, selection, privileged, unprivileged, metrics, predicted_outcome, true_outcome):
+    try:
+        privileged = int(privileged)
+        unprivileged = int(unprivileged)
+    except Exception:
+        pass
+
+    print(predicted_outcome)
+    print(privileged)
+
+    predicted_outcome_column_process = data.loc[:,predicted_outcome]
+    predicted_outcome_column_arr = predicted_outcome_column_process.values                
+
+
+    data_orig_true = BinaryLabelDataset(df = data, label_names = [true_outcome], protected_attribute_names = [selection])
+    data_orig_predicted = data_orig_true.copy()
+    data_orig_predicted.labels = predicted_outcome_column_arr
+
+    privileged_group = [{selection: privileged}]
+    unprivileged_group = [{selection: unprivileged}]
+    metric_orig_train = ClassificationMetric(data_orig_true, data_orig_predicted, 
+                                                unprivileged_groups=unprivileged_group,
+                                                privileged_groups=privileged_group)
+
+    output = [[],[]]
+    for metric in metrics:
+        o = eval('metric_orig_train.' + metric + '()')
+        output[0].append(round(o, 10))
+
+
+    RW = Reweighing(unprivileged_groups=unprivileged_group, privileged_groups=privileged_group)
+    dataset_transf_train = RW.fit_transform(data_orig_predicted)
+
+    true_outcome_column_process = data.loc[:,true_outcome]
+    true_outcome_column_arr = true_outcome_column_process.values                
+
+    data_orig_predicted_transf = dataset_transf_train
+    data_orig_true_transf = data_orig_predicted_transf.copy()
+    data_orig_true_transf.labels = true_outcome_column_arr
+    metric_orig_train = ClassificationMetric(data_orig_true_transf, data_orig_predicted_transf, 
+                                             unprivileged_groups=unprivileged_group,
+                                             privileged_groups=privileged_group)
+    for metric in metrics:
+        o = eval('metric_orig_train.' + metric + '()')
+        output[1].append(round(o, 10))
+
+    return output
+#-------------APP1_CODE 
 def calculate_bias1(data_label, data, selection, privileged, unprivileged, fav_out):
     dataset_used = data_label
     message1_1 = "test1-1"
@@ -77,53 +127,6 @@ def calculate_bias1(data_label, data, selection, privileged, unprivileged, fav_o
     return round(message1_1, 10), round(message1_2, 10), round(message2_1, 10), round(message2_2, 10) # replace with correct return value
 
 
-def calculate_bias2(data, selection, privileged, unprivileged, metrics, predicted_outcome, true_outcome):
-    try:
-        privileged = int(privileged)
-        unprivileged = int(unprivileged)
-    except Exception:
-        pass
-
-    print(predicted_outcome)
-    print(privileged)
-
-    predicted_outcome_column_process = data.loc[:,predicted_outcome]
-    predicted_outcome_column_arr = predicted_outcome_column_process.values                
-
-
-    data_orig_true = BinaryLabelDataset(df = data, label_names = [true_outcome], protected_attribute_names = [selection])
-    data_orig_predicted = data_orig_true.copy()
-    data_orig_predicted.labels = predicted_outcome_column_arr
-
-    privileged_group = [{selection: privileged}]
-    unprivileged_group = [{selection: unprivileged}]
-    metric_orig_train = ClassificationMetric(data_orig_true, data_orig_predicted, 
-                                                unprivileged_groups=unprivileged_group,
-                                                privileged_groups=privileged_group)
-
-    output = [[],[]]
-    for metric in metrics:
-        o = eval('metric_orig_train.' + metric + '()')
-        output[0].append(round(o, 10))
-
-
-    RW = Reweighing(unprivileged_groups=unprivileged_group, privileged_groups=privileged_group)
-    dataset_transf_train = RW.fit_transform(data_orig_predicted)
-
-    true_outcome_column_process = data.loc[:,true_outcome]
-    true_outcome_column_arr = true_outcome_column_process.values                
-
-    data_orig_predicted_transf = dataset_transf_train
-    data_orig_true_transf = data_orig_predicted_transf.copy()
-    data_orig_true_transf.labels = true_outcome_column_arr
-    metric_orig_train = ClassificationMetric(data_orig_true_transf, data_orig_predicted_transf, 
-                                             unprivileged_groups=unprivileged_group,
-                                             privileged_groups=privileged_group)
-    for metric in metrics:
-        o = eval('metric_orig_train.' + metric + '()')
-        output[1].append(round(o, 10))
-
-    return output
 
 
 def bias_mitigation(data, target, path, pri_out, unpri_out):
